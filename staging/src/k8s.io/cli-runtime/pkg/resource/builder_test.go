@@ -343,6 +343,10 @@ func (l *errorRestMapper) RESTMapping(gk schema.GroupKind, versions ...string) (
 	return nil, l.err
 }
 
+func (l *errorRestMapper) RESTMappings(gk schema.GroupKind, versions ...string) ([]*meta.RESTMapping, error) {
+	return nil, l.err
+}
+
 func (l *errorRestMapper) Reset() {
 	meta.MaybeResetRESTMapper(l.RESTMapper)
 }
