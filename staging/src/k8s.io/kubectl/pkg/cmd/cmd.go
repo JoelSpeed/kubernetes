@@ -304,7 +304,9 @@ func NewKubectlCommand(o KubectlOptions) *cobra.Command {
 	// Updates hooks to add kubectl command headers: SIG CLI KEP 859.
 	addCmdHeaderHooks(cmds, kubeConfigFlags)
 
-	f := cmdutil.NewFactory(matchVersionKubeConfigFlags)
+	f := cmdutil.NewFactoryWithOptions(matchVersionKubeConfigFlags, cmdutil.FactoryOptions{
+		IOStreams: o.IOStreams,
+	})
 
 	// Sending in 'nil' for the getLanguageFn() results in using
 	// the LANG environment variable.
